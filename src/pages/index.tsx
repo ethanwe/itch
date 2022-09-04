@@ -3,7 +3,7 @@ import Head from "next/head";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.proxy.example.hello.useQuery({ text: "from tRPC" });
+  const hello = trpc.proxy.example.getAll.useQuery();
 
   return (
     <>
@@ -15,7 +15,6 @@ const Home: NextPage = () => {
       </Head>
       <main className="container flex flex-col items-center justify-center min-h-screen p-4 mx-auto">
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
-
           <span className="text-purple-300">ITCH</span>
         </h1>
         <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-2 lg:w-2/3">
@@ -41,7 +40,7 @@ const Home: NextPage = () => {
           />
         </div>
         <div className="flex items-center justify-center w-full pt-6 text-2xl text-blue-500">
-          {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
+          {hello.data ? <p>{hello.data}</p> : <p>Loading..</p>}
         </div>
       </main>
     </>

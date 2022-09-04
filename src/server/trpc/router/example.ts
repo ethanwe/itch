@@ -10,6 +10,8 @@ export const exampleRouter = t.router({
       };
     }),
   getAll: t.procedure.query(({ ctx }) => {
-    return ctx.prisma.example.findMany();
+    return ctx.prisma.player.findMany().then((players) => {
+      return players.map((p) => p.name).join(", ");
+    });
   }),
 });
