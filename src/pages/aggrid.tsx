@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
-import * as agCharts from "ag-charts-community";
 import { AgChartsReact } from "ag-charts-react";
 import { NextPage } from "next";
 

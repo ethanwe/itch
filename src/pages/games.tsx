@@ -1,8 +1,5 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import { trpc } from "../utils/trpc";
 import * as React from "react";
-import ReactDOM from "react-dom/client";
 
 type Teams = "red" | "black";
 
@@ -83,7 +80,7 @@ const columns = [
 
 const Games: NextPage = () => {
   // Define your row shape
-  const [data, setData] = React.useState(() => [...defaultData]);
+  const [data] = React.useState(() => [...defaultData]);
   const rerender = React.useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
