@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import * as React from "react";
 
 type Teams = "red" | "black";
 
@@ -9,6 +8,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useState, useReducer } from "react";
 
 type Person = {
   game: number;
@@ -80,8 +80,8 @@ const columns = [
 
 const Games: NextPage = () => {
   // Define your row shape
-  const [data] = React.useState(() => [...defaultData]);
-  const rerender = React.useReducer(() => ({}), {})[1];
+  const [data] = useState(() => [...defaultData]);
+  const rerender = useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data,
