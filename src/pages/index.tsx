@@ -4,6 +4,10 @@ import { useState } from "react";
 import { GameForm } from "../components/GameForm";
 import { trpc } from "../utils/trpc";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 const Home: NextPage = () => {
   const hello = trpc.proxy.example.getAll.useQuery();
   const [startDate, setStartDate] = useState(
@@ -17,12 +21,27 @@ const Home: NextPage = () => {
 
   return (
     <>
-      {startDate.toString()}
       <div className="w-full max-w-m">
+        <div className="m-8 text-5xl font-bold mt-0 mb-6"> THE GAMES</div>
+        <div className="m-8 w-80 flex justify-between">
+          <span>From</span>
+          <div className="w-28">
+            <DatePicker
+              selected={startDate}
+              onChange={(date: Date) => setStartDate(date)}
+            />
+          </div>
+          <span>To</span>
+          <div className="w-28">
+            <DatePicker
+              selected={endDate}
+              onChange={(date: Date) => setEndDate(date)}
+            />
+          </div>
+        </div>
         {/* 
       <GameForm></GameForm> 
       */}
-        THE GAMES
         {games &&
           games.data?.map((g) => {
             const redTeamScore = g.scores.find((s) => s.teamId === 1);
