@@ -1,14 +1,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import { GameForm } from "../components/GameForm";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const hello = trpc.proxy.example.getAll.useQuery();
-  const games = trpc.proxy.games.getAll.useQuery();
+  const [startDate, setStartDate] = useState(
+    new Date("2022-01-01T00:00:00.000Z")
+  );
+  const [endDate, setEndDate] = useState(new Date());
+  const games = trpc.proxy.games.getAll.useQuery({
+    startDate,
+    endDate,
+  });
 
   return (
     <>
+      {startDate.toString()}
       <div className="w-full max-w-m">
         {/* 
       <GameForm></GameForm> 
