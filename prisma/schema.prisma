@@ -12,8 +12,28 @@ datasource db {
     referentialIntegrity = "prisma"
 }
 
-model Player {
+model Team {
     id Int @id @default(autoincrement())
     name String 
+    default Boolean @default(false)
+    scores Score[] 
 }
 
+model Game {
+    id Int @id @default(autoincrement())
+    date DateTime?
+
+    scores Score[]
+
+    @@index([date(sort: Desc)])
+}
+
+model Score {
+    scoreValue Int
+    game Game @relation(fields: [gameId], references: [id])
+    gameId Int
+    team Team @relation(fields: [teamId], references: [id])
+    teamId Int
+
+    @@id([gameId, teamId])
+}

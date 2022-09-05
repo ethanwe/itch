@@ -137,7 +137,7 @@ const Games: NextPage = () => {
         </tfoot>
       </table>
       <div className="h-4" />
-      <button onClick={() => rerender()} className="border p-2">
+      <button onClick={() => console.log("rerender")} className="border p-2">
         Rerender
       </button>
     </div>
