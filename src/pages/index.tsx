@@ -7,6 +7,7 @@ import { trpc } from "../utils/trpc";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { PointChart } from "../components/PointChart";
 
 const Home: NextPage = () => {
   const hello = trpc.proxy.example.getAll.useQuery();
@@ -39,9 +40,10 @@ const Home: NextPage = () => {
             />
           </div>
         </div>
-        {/* 
-      <GameForm></GameForm> 
-      */}
+        <PointChart games={games?.data}></PointChart>
+
+        {/* <GameForm></GameForm> */}
+
         {games &&
           games.data?.map((g) => {
             const redTeamScore = g.scores.find((s) => s.teamId === 1);

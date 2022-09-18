@@ -7,7 +7,8 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "connectDb": "pscale connect itch main --port 3309"
   },
   "dependencies": {
     "@prisma/client": "^4.1.0",
